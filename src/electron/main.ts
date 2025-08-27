@@ -1,78 +1,80 @@
-import { app, BrowserWindow, ipcMain } from "electron";
-import path from "path";
-import { getPreloadPath, isDev } from "./util.js";
+import { app, BrowserWindow, ipcMain } from 'electron';
+import path from 'path';
+import { getPreloadPath, isDev } from './util.js';
 import {
-  ADD_TO_WATCH_LIST,
-  CREATE_WATCH_LIST,
-  GET_WATCH_LIST,
-  GET_WATCH_LIST_BY_ID,
-  REMOVE_FROM_WATCH_LIST,
-  REMOVE_WATCH_LIST,
-  SEARCH_WATCH_LIST,
-  UPDATE_WATCH_LIST,
-} from "./utils/methods.js";
+	ADD_TO_WATCH_LIST,
+	CREATE_WATCH_LIST,
+	GET_WATCH_LIST,
+	GET_WATCH_LIST_BY_ID,
+	REMOVE_FROM_WATCH_LIST,
+	REMOVE_WATCH_LIST,
+	SEARCH_WATCH_LIST,
+	UPDATE_WATCH_LIST,
+} from './utils/methods.js';
 import {
-  addToWatchList,
-  createWatchList,
-  getWatchListById,
-  getWatchLists,
-  removeFromWatchList,
-  removeWatchList,
-  searchWatchList,
-  updateWatchList,
-} from "./utils/handlerFunctions.js";
+	addToWatchList,
+	createWatchList,
+	getWatchListById,
+	getWatchLists,
+	removeFromWatchList,
+	removeWatchList,
+	searchWatchList,
+	updateWatchList,
+} from './utils/handlerFunctions.js';
 
 // Starting the app window
-app.on("ready", () => {
-  const mainWindow = new BrowserWindow({
-    title: "Anime watchlist",
-    webPreferences: {
-      preload: getPreloadPath(),
-    },
-  });
+app.on('ready', () => {
+	const mainWindow = new BrowserWindow({
+		title: 'Anime watchlist',
+		webPreferences: {
+			preload: getPreloadPath(),
+		},
+	});
 
-  // Starting the server / app
-  if (isDev()) {
-    console.log("starting dev application...");
-    mainWindow.loadURL("http://localhost:4444");
-  } else {
-    mainWindow.loadFile(path.join(app.getAppPath(), "/dist-react/index.html"));
-  }
+	// Starting the server / app
+	if (isDev()) {
+		console.log('starting dev application...');
+		mainWindow.loadURL('http://localhost:4444');
+	} else {
+		mainWindow.loadFile(
+			path.join(app.getAppPath(), '/dist-react/index.html'),
+		);
+	}
 
-  // ipcMain methods
-  // ipcMain.handle(FETCH_ANIME_DETAIL, async (_, params) => {
-  //   return await fetchAnimeDetail(params);
-  // });
+	// ipcMain methods
+	// ipcMain.handle(FETCH_ANIME_DETAIL, async (_, params) => {
+	//   return await fetchAnimeDetail(params);
+	// });
 
-  ipcMain.handle(GET_WATCH_LIST, async (_, params) => {
-    return await getWatchLists();
-  });
+	ipcMain.handle(GET_WATCH_LIST, async (_, params) => {
+		return await getWatchLists();
+	});
 
-  ipcMain.handle(GET_WATCH_LIST_BY_ID, async (_, params) => {
-    return await getWatchListById(params);
-  });
+	ipcMain.handle(GET_WATCH_LIST_BY_ID, async (_, params) => {
+		return await getWatchListById(params);
+	});
 
-  ipcMain.handle(SEARCH_WATCH_LIST, async (_, params) => {
-    return await searchWatchList(params);
-  });
+	ipcMain.handle(SEARCH_WATCH_LIST, async (_, params) => {
+		return await searchWatchList(params);
+	});
 
-  ipcMain.handle(CREATE_WATCH_LIST, async (_, params) => {
-    return await createWatchList(params);
-  });
+	ipcMain.handle(CREATE_WATCH_LIST, async (_, params) => {
+		return await createWatchList(params);
+	});
 
-  ipcMain.handle(ADD_TO_WATCH_LIST, async (_, params) => {
-    return await addToWatchList(params);
-  });
+	ipcMain.handle(ADD_TO_WATCH_LIST, async (_, params) => {
+		return await addToWatchList(params);
+	});
 
-  ipcMain.handle(UPDATE_WATCH_LIST, async (_, params) => {
-    return await updateWatchList(params);
-  });
+	ipcMain.handle(UPDATE_WATCH_LIST, async (_, params) => {
+		return await updateWatchList(params);
+	});
 
-  ipcMain.handle(REMOVE_FROM_WATCH_LIST, async (_, params) => {
-    return await removeFromWatchList(params);
-  });
+	ipcMain.handle(REMOVE_FROM_WATCH_LIST, async (_, params) => {
+		return await removeFromWatchList(params);
+	});
 
-  ipcMain.handle(REMOVE_WATCH_LIST, async (_, params) => {
-    return await removeWatchList(params);
-  });
+	ipcMain.handle(REMOVE_WATCH_LIST, async (_, params) => {
+		return await removeWatchList(params);
+	});
 });

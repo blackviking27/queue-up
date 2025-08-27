@@ -1,67 +1,67 @@
-import { WatchListItem } from "./types.js";
+import { WatchListItem } from './types.js';
 
 export const getWatchLists = (): Promise<unknown> => {
-  return {};
+	return {};
 };
 
 export const getWatchListById = ({
-  watchListId,
+	watchListId,
 }: {
-  watchListId: string;
+	watchListId: string;
 }): Promise<unknown> => {
-  return {};
+	return {};
 };
 
 export const searchWatchList = ({
-  watchListName,
+	watchListName,
 }: {
-  watchListName: string;
+	watchListName: string;
 }): Promise<unknown> => {
-  return {};
+	return {};
 };
 
 export const createWatchList = ({
-  watchListName,
+	watchListName,
 }: {
-  watchListName: string;
+	watchListName: string;
 }): Promise<unknown> => {
-  return "success";
+	return 'success';
 };
 
 export const addToWatchList = ({
-  watchListId,
-  itemDetails,
+	watchListId,
+	itemDetails,
 }: {
-  watchListId: string;
-  itemDetails: WatchListItem;
+	watchListId: string;
+	itemDetails: WatchListItem;
 }): Promise<unknown> => {
-  return "success";
+	return 'success';
 };
 
 export const updateWatchList = ({
-  watchListId,
-  itemDetails,
+	watchListId,
+	itemDetails,
 }: {
-  watchListId: string;
-  itemDetails: WatchListItem;
+	watchListId: string;
+	itemDetails: WatchListItem;
 }): Promise<unknown> => {
-  return "success";
+	return 'success';
 };
 
 export const removeFromWatchList = ({
-  watchListId,
-  itemId,
+	watchListId,
+	itemId,
 }: {
-  watchListId: string;
-  itemId: string;
+	watchListId: string;
+	itemId: string;
 }): Promise<unknown> => {
-  return "success";
+	return 'success';
 };
 
 export const removeWatchList = ({
-  watchListId,
+	watchListId,
 }: {
-  watchListId: string;
+	watchListId: string;
 }): Promise<unknown> => {
-  return "success";
+	return 'success';
 };
