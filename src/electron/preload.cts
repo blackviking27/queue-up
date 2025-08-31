@@ -1,7 +1,4 @@
-import { WatchListItem } from './utils/types';
-
 const { contextBridge, ipcRenderer } = require('electron');
-const { FETCH_ANIME_DETAIL, SEARCH_ANIME } = require('../utils/methods');
 
 contextBridge.exposeInMainWorld('commands', {
 	getWatchLists: () => ipcRendererInvoke('getWatchLists'),
@@ -13,10 +10,10 @@ contextBridge.exposeInMainWorld('commands', {
 
 	createWatchList: (watchListName: string) =>
 		ipcRendererInvoke('createWatchList', { watchListName }),
-	addToWatchList: (watchListId: string, itemDetails: WatchListItem) =>
+	addToWatchList: (watchListId: string, itemDetails: any) =>
 		ipcRendererInvoke('addToWatchList', { watchListId, itemDetails }),
 
-	updateWatchList: (watchListId: string, itemDetails: WatchListItem) =>
+	updateWatchList: (watchListId: string, itemDetails: any) =>
 		ipcRendererInvoke('updateWatchList', { watchListId, itemDetails }),
 
 	removeFromWatchList: (watchListId: string, itemId: string) =>

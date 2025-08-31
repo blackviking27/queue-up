@@ -1,7 +1,7 @@
 import { WatchListItem } from './types.js';
 
 export const getWatchLists = (): Promise<unknown> => {
-	return {};
+	return new Promise(() => {});
 };
 
 export const getWatchListById = ({
@@ -9,7 +9,7 @@ export const getWatchListById = ({
 }: {
 	watchListId: string;
 }): Promise<unknown> => {
-	return {};
+	return new Promise(() => {});
 };
 
 export const searchWatchList = ({
@@ -17,7 +17,7 @@ export const searchWatchList = ({
 }: {
 	watchListName: string;
 }): Promise<unknown> => {
-	return {};
+	return new Promise(() => {});
 };
 
 export const createWatchList = ({
@@ -25,7 +25,7 @@ export const createWatchList = ({
 }: {
 	watchListName: string;
 }): Promise<unknown> => {
-	return 'success';
+	return new Promise(() => {});
 };
 
 export const addToWatchList = ({
@@ -35,7 +35,7 @@ export const addToWatchList = ({
 	watchListId: string;
 	itemDetails: WatchListItem;
 }): Promise<unknown> => {
-	return 'success';
+	return new Promise(() => {});
 };
 
 export const updateWatchList = ({
@@ -45,7 +45,7 @@ export const updateWatchList = ({
 	watchListId: string;
 	itemDetails: WatchListItem;
 }): Promise<unknown> => {
-	return 'success';
+	return new Promise(() => {});
 };
 
 export const removeFromWatchList = ({
@@ -55,7 +55,7 @@ export const removeFromWatchList = ({
 	watchListId: string;
 	itemId: string;
 }): Promise<unknown> => {
-	return 'success';
+	return new Promise(() => {});
 };
 
 export const removeWatchList = ({
@@ -63,5 +63,5 @@ export const removeWatchList = ({
 }: {
 	watchListId: string;
 }): Promise<unknown> => {
-	return 'success';
+	return new Promise(() => {});
 };

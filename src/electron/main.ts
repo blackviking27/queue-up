@@ -21,9 +21,14 @@ import {
 	searchWatchList,
 	updateWatchList,
 } from './utils/handlerFunctions.js';
+import { createTableIfNotExist } from './database/db.js';
 
 // Starting the app window
 app.on('ready', () => {
+	// setting up db tables
+	createTableIfNotExist('watchList');
+	createTableIfNotExist('watchListItem');
+
 	const mainWindow = new BrowserWindow({
 		title: 'Anime watchlist',
 		webPreferences: {
