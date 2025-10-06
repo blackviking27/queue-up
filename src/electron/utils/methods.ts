@@ -1,4 +1,4 @@
-export const GET_WATCH_LIST = 'getWatchList';
+export const GET_WATCH_LIST = 'getWatchLists';
 export const GET_WATCH_LIST_BY_ID = 'getWatchListById';
 export const SEARCH_WATCH_LIST = 'searchWatchList';
 export const CREATE_WATCH_LIST = 'createWatchList';

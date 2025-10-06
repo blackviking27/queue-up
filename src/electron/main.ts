@@ -21,13 +21,16 @@ import {
 	searchWatchList,
 	updateWatchList,
 } from './utils/handlerFunctions.js';
-import { createTableIfNotExist } from './database/db.js';
+import {
+	createWatchListItemTable,
+	createWatchLsitsTable,
+} from './database/db.js';
 
 // Starting the app window
 app.on('ready', () => {
 	// setting up db tables
-	createTableIfNotExist('watchList');
-	createTableIfNotExist('watchListItem');
+	createWatchLsitsTable();
+	createWatchListItemTable();
 
 	const mainWindow = new BrowserWindow({
 		title: 'Anime watchlist',
@@ -45,11 +48,6 @@ app.on('ready', () => {
 			path.join(app.getAppPath(), '/dist-react/index.html'),
 		);
 	}
-
-	// ipcMain methods
-	// ipcMain.handle(FETCH_ANIME_DETAIL, async (_, params) => {
-	//   return await fetchAnimeDetail(params);
-	// });
 
 	ipcMain.handle(GET_WATCH_LIST, async (_, params) => {
 		return await getWatchLists();

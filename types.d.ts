@@ -1,12 +1,12 @@
 interface Window {
 	commands: {
-		fetchAnimeDetail: () => unknown;
-		searchAnime: () => unknown;
-		getWatchList: () => unknown;
-		addToWatchList: () => void;
-		removeFromWatchList: (animeId: string) => unknown;
-		updateWatchStatus: (animeId: string, status: string) => unknown;
-		getRecommendation: () => unknown;
-		getPopularAnime: () => unknown;
+		getWatchLists: () => unknown;
+		getWatchListById: (listId: string) => unknown;
+		searchWatchList: () => unknown;
+		createWatchList: () => void;
+		addToWatchList: (animeId: string) => unknown;
+		updateWatchList: (animeId: string, status: string) => unknown;
+		removeFromWatchList: () => unknown;
+		removeWatchList: () => unknown;
 	};
 }

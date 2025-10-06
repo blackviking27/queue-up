@@ -1,7 +1,9 @@
+import { getWatchListByIdFromDB, getWatchListsFromDB } from '../database/db.js';
 import { WatchListItem } from './types.js';
 
-export const getWatchLists = (): Promise<unknown> => {
-	return new Promise(() => {});
+export const getWatchLists = (): any[] => {
+	const data = getWatchListsFromDB();
+	return data;
 };
 
 export const getWatchListById = ({
@@ -9,7 +11,7 @@ export const getWatchListById = ({
 }: {
 	watchListId: string;
 }): Promise<unknown> => {
-	return new Promise(() => {});
+	return getWatchListByIdFromDB(watchListId);
 };
 
 export const searchWatchList = ({
