@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Settings2 } from 'lucide-react';
+import { Plus, Settings2 } from 'lucide-react';
 import { watchListsData } from './dummyData';
 import { Badge } from './ui/badge';
 import ListItem from './ListItem';
 import { useGlobalStore } from '@/lib/store';
+import { Button } from './ui/button';
+import { Link } from 'react-router';
 
 export default function WatchLists() {
 	const [watchLists, setWatchLists] = useState<any[]>(watchListsData);
@@ -21,7 +23,7 @@ export default function WatchLists() {
 	}, [storeWatchLists]);
 
 	return (
-		<section className="px-[5px]">
+		<section className="px-[10px]">
 			<div className="sticky top-0 bg-white">
 				<div className="py-3 flex justify-between items-center">
 					<div className="flex justify-center items-center">
@@ -45,6 +47,15 @@ export default function WatchLists() {
 					<ListItem item={item} key={index} />
 				))}
 			</div>
+			<Button className="fixed bottom-4 right-4 z-50 cursor-pointer">
+				<Link
+					className="flex justify-center items-center"
+					to="/add/list"
+				>
+					<Plus className="block" size={5} />
+					<div>&nbsp;Create</div>
+				</Link>
+			</Button>
 		</section>
 	);
 }

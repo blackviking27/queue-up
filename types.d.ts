@@ -3,7 +3,7 @@ interface Window {
 		getWatchLists: () => unknown;
 		getWatchListById: (listId: string) => unknown;
 		searchWatchList: () => unknown;
-		createWatchList: () => void;
+		createWatchList: (params: Record<string, value>) => void;
 		addToWatchList: (animeId: string) => unknown;
 		updateWatchList: (animeId: string, status: string) => unknown;
 		removeFromWatchList: () => unknown;

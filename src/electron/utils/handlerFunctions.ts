@@ -1,4 +1,8 @@
-import { getWatchListByIdFromDB, getWatchListsFromDB } from '../database/db.js';
+import {
+	createWatchListInDb,
+	getWatchListByIdFromDB,
+	getWatchListsFromDB,
+} from '../database/db.js';
 import { WatchListItem } from './types.js';
 
 export const getWatchLists = (): any[] => {
@@ -22,12 +26,21 @@ export const searchWatchList = ({
 	return new Promise(() => {});
 };
 
-export const createWatchList = ({
-	watchListName,
-}: {
-	watchListName: string;
+export const createWatchList = async (params: {
+	listName: string;
+	description?: string;
 }): Promise<unknown> => {
-	return new Promise(() => {});
+	try {
+		console.log(`Name: ${params.listName} Desc : ${params.description}`);
+		const data = await createWatchListInDb(
+			params.listName,
+			params.description,
+		);
+		return data;
+	} catch (err) {
+		console.log('Error while creating watch list', JSON.stringify(err));
+		throw new Error('Error while creating watch list');
+	}
 };
 
 export const addToWatchList = ({

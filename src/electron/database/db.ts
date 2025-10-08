@@ -64,3 +64,23 @@ export const getWatchListByIdFromDB = (watchListId: string): any => {
 		.all(watchListId);
 	return { meta: watchListMetaData, data: watchListData };
 };
+
+export const createWatchListInDb = (
+	listName: string,
+	description: string = '',
+): any => {
+	try {
+		const data = db
+			.prepare(
+				`
+				INSERT INTO watchLists (name, description)
+				VALUES (?,?)
+			`,
+			)
+			.run(listName, description);
+		return data;
+	} catch (err) {
+		console.log('Error while inserting data', JSON.stringify(err));
+		throw new Error('Error while inserting data');
+	}
+};
