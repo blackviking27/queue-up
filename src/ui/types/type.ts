@@ -17,9 +17,17 @@ export type TWatchListItem = {
 	badges?: string[];
 };
 
-export const ItemTypes = {
+export const ITEM_TYPES = {
 	MOVIE: 'movie',
 	ANIME: 'anime',
-} as const;
+	BOOKS: 'books',
+	GAMES: 'games',
+	SERIES: 'series',
+};
 
-export type ItemTypes = (typeof ItemTypes)[keyof typeof ItemTypes];
+export const STATUS = {
+	NOT_STARTED: 'Not started',
+	WATCHING: 'Watching',
+	FINISHED: 'Finished',
+	DROPPED: 'DROPPED',
+};

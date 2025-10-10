@@ -6,6 +6,7 @@ import { Link, NavLink, Route, Routes } from 'react-router';
 import WatchLists from './components/WatchLists';
 import WatchList from './components/WatchList';
 import AddListForm from './components/AddListForm';
+import AddItemForm from './components/AddItemForm';
 
 function App() {
 	// const [watchLists, setWatchLists] = useState([]);
@@ -24,6 +25,10 @@ function App() {
 						<Route path="/" element={<WatchLists />} />
 						<Route path="/:watchListId" element={<WatchList />} />
 						<Route path="/add/list" element={<AddListForm />} />
+						<Route
+							path="/add/:watchListId/item"
+							element={<AddItemForm />}
+						/>
 					</Routes>
 				</section>
 			</main>

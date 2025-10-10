@@ -84,3 +84,26 @@ export const createWatchListInDb = (
 		throw new Error('Error while inserting data');
 	}
 };
+
+export const addWatchlistItemToDB = (
+	name: string,
+	description: string,
+	status: string,
+	type: string,
+	watchListId: string,
+) => {
+	try {
+		const data = db
+			.prepare(
+				`
+				INSERT INTO watchListItem (name, description, status, type, watchListId)
+				VALUES (?,?,?,?,?)
+			`,
+			)
+			.run(name, description, status, type, watchListId);
+		return data;
+	} catch (err) {
+		console.log('[DB]: Error while inserting data', err);
+		throw new Error('[DB] Error while inserting data');
+	}
+};

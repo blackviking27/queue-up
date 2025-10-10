@@ -1,4 +1,5 @@
 import {
+	addWatchlistItemToDB,
 	createWatchListInDb,
 	getWatchListByIdFromDB,
 	getWatchListsFromDB,
@@ -31,7 +32,6 @@ export const createWatchList = async (params: {
 	description?: string;
 }): Promise<unknown> => {
 	try {
-		console.log(`Name: ${params.listName} Desc : ${params.description}`);
 		const data = await createWatchListInDb(
 			params.listName,
 			params.description,
@@ -43,14 +43,24 @@ export const createWatchList = async (params: {
 	}
 };
 
-export const addToWatchList = ({
-	watchListId,
-	itemDetails,
-}: {
-	watchListId: string;
-	itemDetails: WatchListItem;
-}): Promise<unknown> => {
-	return new Promise(() => {});
+export const addToWatchList = async (
+	params: Record<string, any>,
+): Promise<unknown> => {
+	try {
+		const { name, description, status, type, watchListId } = params;
+
+		const data = addWatchlistItemToDB(
+			name,
+			description,
+			status,
+			type,
+			watchListId,
+		);
+		return data;
+	} catch (err) {
+		console.log('Error while inserting data', err);
+		throw new Error('Error while inserting data');
+	}
 };
 
 export const updateWatchList = ({
