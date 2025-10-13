@@ -29,5 +29,5 @@ export const STATUS = {
 	NOT_STARTED: 'Not started',
 	WATCHING: 'Watching',
 	FINISHED: 'Finished',
-	DROPPED: 'DROPPED',
+	DROPPED: 'Dropped',
 };

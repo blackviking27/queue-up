@@ -1,5 +1,5 @@
 import { useGlobalStore } from '@/lib/store';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, redirect, useParams } from 'react-router';
 import type { TWatchListItem } from '@/types/type';
 import ReorderableList from './ReorderableList';
@@ -26,6 +26,7 @@ export default function WatchList() {
 	const [allowDragging, setAllowDragging] = useState(false);
 	const [sortOrder, setSortOrder] = useState('asc');
 	const [filter, setFilter] = useState(null);
+	const searchTimeout = useRef<any>(null);
 
 	useEffect(() => {
 		const getListData = async () => {
@@ -52,7 +53,11 @@ export default function WatchList() {
 	// useEffect(() => {}, [sortOrder, filter]);
 
 	const handleSearch = (searchString: string) => {
-		console.log('Searched >>>', searchString);
+		if (searchTimeout.current) {
+			clearTimeout(searchTimeout.current);
+		} else {
+			searchTimeout.current = setTimeout(() => {}, 400);
+		}
 	};
 
 	return (

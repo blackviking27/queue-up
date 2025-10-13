@@ -2,7 +2,7 @@
 
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import AppSidebar from './components/SideBar';
-import { Link, NavLink, Route, Routes } from 'react-router';
+import { NavLink, Route, Routes } from 'react-router';
 import WatchLists from './components/WatchLists';
 import WatchList from './components/WatchList';
 import AddListForm from './components/AddListForm';

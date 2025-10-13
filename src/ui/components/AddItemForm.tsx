@@ -24,8 +24,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from './ui/select';
-import { redirect, useParams } from 'react-router';
-import { SelectLabel } from '@radix-ui/react-select';
+import { redirect, useNavigate, useParams } from 'react-router';
 
 const formSchema = z.object({
 	name: z.string().min(2, {
@@ -38,6 +37,7 @@ const formSchema = z.object({
 
 function FormComponent({ watchListId }: any) {
 	const [loading, setLoading] = useState(false);
+	const navigate = useNavigate();
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -164,7 +164,19 @@ function FormComponent({ watchListId }: any) {
 				{loading ? (
 					<LoaderIcon />
 				) : (
-					<Button type="submit">Submit</Button>
+					<>
+						<Button
+							className="mr-2"
+							variant={'outline'}
+							onClick={(e) => {
+								e.preventDefault();
+								navigate(`/${watchListId}`);
+							}}
+						>
+							Cancel
+						</Button>
+						<Button type="submit">Submit</Button>
+					</>
 				)}
 			</form>
 		</Form>

@@ -16,6 +16,7 @@ import { useState } from 'react';
 import { LoaderIcon } from 'lucide-react';
 import { Toaster } from './ui/sonner';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router';
 
 const formSchema = z.object({
 	listName: z.string().min(2, {
@@ -26,6 +27,7 @@ const formSchema = z.object({
 
 function FormComponent() {
 	const [loading, setLoading] = useState(false);
+	const navigate = useNavigate();
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -35,6 +37,7 @@ function FormComponent() {
 	});
 	async function onSubmit(values: z.infer<typeof formSchema>) {
 		setLoading(true);
+		console.log('ON SUBMIT');
 		try {
 			const data = await window.commands.createWatchList(values);
 			if (data == undefined) {
@@ -86,7 +89,20 @@ function FormComponent() {
 				{loading ? (
 					<LoaderIcon />
 				) : (
-					<Button type="submit">Submit</Button>
+					<>
+						<Button
+							className="mr-2"
+							variant={'outline'}
+							onClick={(e) => {
+								console.log('CLICKED');
+								e.preventDefault();
+								navigate('/');
+							}}
+						>
+							Cancel
+						</Button>
+						<Button type="submit">Submit</Button>
+					</>
 				)}
 			</form>
 		</Form>
