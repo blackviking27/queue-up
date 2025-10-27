@@ -35,6 +35,7 @@ const ReorderableList = ({
 				>
 					<WatchListItem
 						key={index}
+						id={listItem.id}
 						order={index + 1}
 						title={listItem?.title || listItem?.name}
 						description={listItem?.description}

@@ -4,5 +4,6 @@ export const SEARCH_WATCH_LIST = 'searchWatchList';
 export const CREATE_WATCH_LIST = 'createWatchList';
 export const ADD_TO_WATCH_LIST = 'addToWatchList';
 export const UPDATE_WATCH_LIST = 'updateWatchList';
+export const UPDATE_WATCH_LIST_ITEM = 'updateWatchListItem';
 export const REMOVE_FROM_WATCH_LIST = 'removeFromWatchList';
 export const REMOVE_WATCH_LIST = 'removeWatchList';

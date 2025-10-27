@@ -7,9 +7,10 @@ import WatchLists from './components/WatchLists';
 import WatchList from './components/WatchList';
 import AddListForm from './components/AddListForm';
 import AddItemForm from './components/AddItemForm';
+import EditListForm from './components/EditList';
+import EditItemForm from './components/EditItemForm';
 
 function App() {
-	// const [watchLists, setWatchLists] = useState([]);
 	return (
 		<SidebarProvider>
 			<AppSidebar />
@@ -28,6 +29,14 @@ function App() {
 						<Route
 							path="/add/:watchListId/item"
 							element={<AddItemForm />}
+						/>
+						<Route
+							path="/edit/list/:watchListId"
+							element={<EditListForm />}
+						/>
+						<Route
+							path="/edit/item/:itemId"
+							element={<EditItemForm />}
 						/>
 					</Routes>
 				</section>

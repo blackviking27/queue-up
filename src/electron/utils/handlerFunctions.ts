@@ -3,6 +3,8 @@ import {
 	createWatchListInDb,
 	getWatchListByIdFromDB,
 	getWatchListsFromDB,
+	updateWatchListInDB,
+	updateWatchListItemInDB,
 } from '../database/db.js';
 import { WatchListItem } from './types.js';
 
@@ -49,7 +51,7 @@ export const addToWatchList = async (
 	try {
 		const { name, description, status, type, watchListId } = params;
 
-		const data = addWatchlistItemToDB(
+		const data = await addWatchlistItemToDB(
 			name,
 			description,
 			status,
@@ -63,14 +65,44 @@ export const addToWatchList = async (
 	}
 };
 
-export const updateWatchList = ({
-	watchListId,
-	itemDetails,
-}: {
-	watchListId: string;
-	itemDetails: WatchListItem;
+export const updateWatchList = async (params: {
+	watchListId: number;
+	name: string;
+	description: string;
 }): Promise<unknown> => {
-	return new Promise(() => {});
+	try {
+		const data = await updateWatchListInDB(
+			params.watchListId,
+			params.name,
+			params.description,
+		);
+		return data;
+	} catch (err) {
+		console.log('Error while updating the list', err);
+		throw new Error('Error while updating the list');
+	}
+};
+
+export const updateWatchListItem = async (params: {
+	itemId: number;
+	name: string;
+	description: string;
+	status: string;
+	type: string;
+}): Promise<unknown> => {
+	try {
+		const data = await updateWatchListItemInDB(
+			params.itemId,
+			params.name,
+			params.description,
+			params.status,
+			params.type,
+		);
+		return data;
+	} catch (err) {
+		console.log('Error while updating the list', err);
+		throw new Error('Error while updating the list');
+	}
 };
 
 export const removeFromWatchList = ({

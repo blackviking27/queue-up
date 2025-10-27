@@ -13,8 +13,10 @@ contextBridge.exposeInMainWorld('commands', {
 	addToWatchList: (params: Record<string, any>) =>
 		ipcRendererInvoke('addToWatchList', params),
 
-	updateWatchList: (watchListId: string, itemDetails: any) =>
-		ipcRendererInvoke('updateWatchList', { watchListId, itemDetails }),
+	updateWatchList: (params: Record<string, unknown>) =>
+		ipcRendererInvoke('updateWatchList', params),
+	updateWatchListItem: (params: Record<string, unknown>) =>
+		ipcRendererInvoke('updateWatchListItem', params),
 
 	removeFromWatchList: (watchListId: string, itemId: string) =>
 		ipcRendererInvoke('removeFromWatchList', { watchListId, itemId }),

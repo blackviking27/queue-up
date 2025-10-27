@@ -107,3 +107,57 @@ export const addWatchlistItemToDB = (
 		throw new Error('[DB] Error while inserting data');
 	}
 };
+
+export const updateWatchListInDB = (
+	watchListId: number,
+	name: string,
+	description: string,
+) => {
+	try {
+		const data = db
+			.prepare(
+				`
+				UPDATE watchLists
+				SET
+					name = COALESCE(?, name),
+					description = COALESCE(?, description)
+				WHERE
+					id = ? 
+			`,
+			)
+			.run(name, description, watchListId);
+		return data;
+	} catch (err) {
+		console.log('[DB:] Error while updating list', err);
+		throw new Error('[DB]: Error while updating list');
+	}
+};
+
+export const updateWatchListItemInDB = (
+	itemId: number,
+	name: string,
+	description: string,
+	status: string,
+	type: string,
+) => {
+	try {
+		const data = db
+			.prepare(
+				`
+				UPDATE watchListItem
+				SET
+					name = COALESCE(?, name),
+					description = COALESCE(?, description),
+					status = COALESCE(?, status),
+					type = COALESCE(?, type)
+				WHERE
+					id = ? 
+			`,
+			)
+			.run(name, description, status, type, itemId);
+		return data;
+	} catch (err) {
+		console.log('[DB:] Error while updating item', err);
+		throw new Error('[DB]: Error while updating item');
+	}
+};

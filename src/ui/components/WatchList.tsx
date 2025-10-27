@@ -55,9 +55,24 @@ export default function WatchList() {
 	const handleSearch = (searchString: string) => {
 		if (searchTimeout.current) {
 			clearTimeout(searchTimeout.current);
-		} else {
-			searchTimeout.current = setTimeout(() => {}, 400);
 		}
+		searchTimeout.current = setTimeout(() => {
+			console.log('Search string', searchString);
+			if (searchString === '') {
+				setWatchList(globalState.watchList);
+			} else {
+				const filteredList = globalState.watchList.filter(
+					(item) =>
+						item.name
+							.toLowerCase()
+							.includes(searchString.toLowerCase()) ||
+						(item.description?.toLowerCase() || '').includes(
+							searchString.toLowerCase(),
+						),
+				);
+				setWatchList(filteredList);
+			}
+		}, 200);
 	};
 
 	return (

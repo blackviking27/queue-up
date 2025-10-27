@@ -26,8 +26,8 @@ export const ITEM_TYPES = {
 };
 
 export const STATUS = {
-	NOT_STARTED: 'Not started',
-	WATCHING: 'Watching',
-	FINISHED: 'Finished',
-	DROPPED: 'Dropped',
+	NOT_STARTED: 'not started',
+	WATCHING: 'watching',
+	FINISHED: 'finished',
+	DROPPED: 'dropped',
 };

@@ -10,6 +10,7 @@ import {
 	REMOVE_WATCH_LIST,
 	SEARCH_WATCH_LIST,
 	UPDATE_WATCH_LIST,
+	UPDATE_WATCH_LIST_ITEM,
 } from './utils/methods.js';
 import {
 	addToWatchList,
@@ -20,6 +21,7 @@ import {
 	removeWatchList,
 	searchWatchList,
 	updateWatchList,
+	updateWatchListItem,
 } from './utils/handlerFunctions.js';
 import {
 	createWatchListItemTable,
@@ -71,6 +73,10 @@ app.on('ready', () => {
 
 	ipcMain.handle(UPDATE_WATCH_LIST, async (_, params) => {
 		return await updateWatchList(params);
+	});
+
+	ipcMain.handle(UPDATE_WATCH_LIST_ITEM, async (_, params) => {
+		return await updateWatchListItem(params);
 	});
 
 	ipcMain.handle(REMOVE_FROM_WATCH_LIST, async (_, params) => {
